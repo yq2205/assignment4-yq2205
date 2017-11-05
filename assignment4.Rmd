@@ -151,7 +151,21 @@ plot(pca2, type="lines")
 
 ```{r}
 #create a new data frame
+D4<- as.data.frame(pca2$x)
+#attach "accuracy"
+D5<-cbind(D4, as.data.frame(A1$accuracy))
+COR4<-cor(D5)
+```
+```{r}
+plot(COR4)
+```
 
+```{r}
+pca2$rotation
+loadings2<-abs(pca2$rotation)
+sweep(loadings, 2, colSums(loadings2),"/")
+biplot(pca2)
+#from the biplot we can see all the four components explains substantive variance.
 ```
 
 
